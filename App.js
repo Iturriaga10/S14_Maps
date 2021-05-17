@@ -1,12 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions  } from 'react-native';
+import MapView from 'react-native-maps';
+import { Marker, Circle } from 'react-native-maps';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <MapView 
+        style={styles.map} 
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}  
+      >
+        <Marker
+        coordinate={{ 
+          latitude: 37.78825,
+          longitude: -122.4324
+        }}
+        title="Here"
+      />
+
+      {/* <Marker
+        coordinate={{ 
+          latitude: 37.78825,
+          longitude: -122.4324
+        }}
+        image={{uri: 'https://www.cp-desk.com/wp-content/uploads/2019/02/map-marker-free-download-png.png'}}
+      /> */}
+      </MapView>
+      
+      
     </View>
   );
 }
@@ -17,5 +43,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
